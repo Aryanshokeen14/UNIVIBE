@@ -1,0 +1,76 @@
+.container{
+    padding: 1.3rem;
+    min-height: 92vh;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    width: 100%;
+}
+
+.leftSide{
+    flex:0.4;
+    width: 100%;
+}
+.imageContainer{
+   border: 1px solid grey;
+   border-top-left-radius: 10px;
+   border-top-right-radius: 10px;
+}
+
+.imageContainer > img{
+    width: 100%;
+    padding-inline: 1rem;
+    transition: all 0.4s;
+}
+
+.imageContainer > img:hover{
+    opacity: 0.4;
+    background: #000;
+    cursor: pointer;
+    
+}
+
+.imageContainer > p{
+    background: rgb(78, 78, 78);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 30px;
+    font-size: larger;
+    padding-inline: 1rem;
+    padding-block: 0.1rem;
+    border: 1px solid grey;
+}
+.rightSide{
+    flex:0.6;
+    border: 1px solid grey;
+    border-radius: 10px;
+    
+}
+.infoHeading{
+    background: rgb(78, 78, 78);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 30px;
+    font-size: larger;
+    padding-inline: 1rem;
+    padding-block: 0.1rem;
+}
+
+.nameEdit{
+    outline: none;
+    border-style: none;
+    padding-inline: 10px;
+    padding-block: 3px;
+    background-color: #000;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.bioEdit{
+    outline: none;
+    border-style:dashed;
+    padding-inline: 10px;
+    padding-block: 3px;
+    background-color: #000;
+    color: white;
+}

@@ -1,0 +1,235 @@
+.scrollComponent{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: black;
+    color: white;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+    width: 80%;
+}
+
+.createPostContainer{
+    display: flex;
+    height: 10svh;
+    padding-inline: 0.8rem;
+    width: 100%;
+    gap: 1.3rem;
+    align-items: center;
+    background: rgb(231, 230, 230);
+    border-radius: 10px;
+    position: relative;
+}
+.userProfile{
+    border-radius: 100%;
+    height: 70%;
+}
+
+.createPostContainer > textarea{
+    width: 100%;
+}
+
+.Fab{
+    background-color: silver;
+    border-radius: 100%;
+    color: white;
+    width: 45px;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.Fab > svg{
+    width:100px;
+    height: 40px;
+}
+
+.textAreaOfContent{
+    width: 80%;
+    height: 70%;
+    border: 1px solid silver;
+    border-radius:10px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-inline: 1.5rem;
+    padding-block: 0.8rem;
+    outline: none;
+}
+
+.uploadButton{
+    position: absolute;
+    right: 0px;
+    bottom: -33px;
+    background-color: silver;
+    color: white;
+    padding-inline: 1.2rem;
+    padding-block: 0.4rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.singleCard{
+    width:100%;
+    border-radius: 10px 10px 0px 0px;
+    border-bottom: 1px solid rgb(179,179,179);
+}
+
+.singleCard_profileContainer{
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    padding: 1.2rem;
+    padding-right: 3.4rem;
+    width: 100%;
+    position: relative;
+}
+
+.singleCard_profileContainer > img{
+    width: 10%;
+    border-radius: 50%;
+}
+
+.singleCard_image{
+    width:100%;
+    padding-top: 0.6rem;
+    height: fit-content;
+    overflow: hidden;
+}
+
+.singleCard_image > img{
+    width: 480px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.edit{
+    margin-left: auto;
+    border-radius: 30%;
+    height: 30px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.edit:hover{
+    background-color: rgb(58, 58, 58);
+}
+
+.deleteButton{
+    position: absolute;
+    right: 55px;
+    top:50px;
+    background-color: rgb(48, 48, 48);
+    color: white;
+    padding-inline: 1.2rem;
+    padding-block: 0.4rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.statsContainer{
+    display: flex;
+    height: 20%;
+    width: 100%;
+    color: rgb(193, 193, 193);
+    padding-block: 0.3rem;
+}
+
+.singleOption_statsContainer{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.2rem;
+}
+
+.singleOption_statsContainer > svg{
+    cursor: pointer;
+    height: 60%;
+    width: 8%;
+}
+
+
+.commentsContainer{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background: rgb(0,0,0,0.7);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.allCommentsContainer{
+    width: 40vw;
+    height: 70vh;
+    background: white;
+    border-radius: 10px;
+    position: relative;
+    padding: 1.4rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.allCommentsContainer_scroll {
+  flex: 1; /* Take up all space above the input */
+  overflow-y: auto;
+  margin-bottom: 4rem;
+  padding-right: 0.5rem;
+}
+
+.postCommentContainer{
+    position: absolute;
+    bottom: 1.2rem;
+    left: 1.2rem;
+    width: 91%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.allCommentsContainer_scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.allCommentsContainer_scroll::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 10px;
+}
+
+.postCommentContainer>input{
+    flex: 1.2;
+    padding-inline: 1.5rem;
+    padding-block: 1rem;
+    border: none;
+    background-color: rgb(225, 225, 225);
+    border-radius: 10px;
+    font-size:medium;
+}
+
+.postCommentContainer_commentBtn{
+    flex: 0.1;
+    color: white;
+    background-color: rgb(13, 130, 176);
+    padding-inline: 0.8rem;
+    padding-block: 1rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.disabledPostBtn{
+    opacity: 0.5;
+}

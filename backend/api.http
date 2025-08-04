@@ -1,0 +1,68 @@
+POST http://localhost:9090/register HTTP/1.1
+content-Type: application/json
+
+{
+    "username":"xyz",
+    "password":"xyz",
+    "email":"xyz",
+    "name":"xyz",
+    "gender":"male"
+}
+
+
+###
+
+POST http://localhost:9090/login HTTP/1.1
+content-Type: application/json
+
+{
+    "email":"xyz",
+    "password":"xyz"
+}
+
+
+###
+
+GET http://localhost:9090/get_user_and_profile 
+content-Type: application/json
+
+{
+"token": "386ace91d0fe8c20908c1dcf2b3d6524cd37590122585aa70e64580ea32219f6"
+}
+
+
+
+###
+
+POST http://localhost:9090/update_profile_data
+content-Type: application/json
+
+{
+    "token": "e0e4ad4eb90b9b293d382c7cff7a7241fdfb492afa054cc3d26701a2410a7608",
+    "bio":"Hi, i am aryan , 4th yr undergraduate and co-founder of univibe ",
+    "location":"delhi",
+    "dating":[
+        {
+            "relationshipStatus":"single",
+            "interests":["in money", "coding"],
+            "lookingFor":"money"
+        }
+    ],
+    "education":[
+        {
+            "degree":"B.Tech",
+            "fieldOfStudy":"electrical"
+        }
+    ]
+}
+
+
+
+###
+
+GET http://localhost:9090/user/get_all_users
+
+
+
+
+
