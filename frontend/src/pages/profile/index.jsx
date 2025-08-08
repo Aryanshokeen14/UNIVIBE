@@ -1,4 +1,4 @@
-import UserLayout from "@/layout/UserLayout";
+import UserLayout from "@/layout/userLayout";
 import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import DashboardLayout from "@/layout/DashboardLayout";
