@@ -4,5 +4,3 @@ backend/node_modules
 .env.local
 .env.*.local
 .DS_Store
-backend/uploads
-frontend/public
