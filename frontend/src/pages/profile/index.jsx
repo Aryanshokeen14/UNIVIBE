@@ -128,7 +128,7 @@ export default function ProfilePage() {
     className={styles.nameEdit}
     style={{color:"grey"}}
     type="text"
-    value={userProfile.dating[0]?.interests.join(", ") || ""}
+    value={userProfile.dating[0]?.interests?.join(", ") || ""}
     onChange={(e) => {
       const updatedDating = [...userProfile.dating];
       updatedDating[0] = {
