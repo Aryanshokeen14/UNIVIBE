@@ -34,6 +34,7 @@ export default function DiscoverPage() {
        <DashboardLayout>
         <div className={styles.container}>
             <h1>Campus Students</h1>
+            <br />
             <div className={styles.allUserProfile}>
               {authState.all_profiles_fetched && authState.all_users.map((user)=>{
                 return(
@@ -42,7 +43,7 @@ export default function DiscoverPage() {
                   }} key={user._id} className={styles.userCard}>
                     <img src={`${BASE_URL}/${user.userId.profilePicture}`} alt="" />
                     
-                      <div style={{display:"flex",justifyContent:"center"}}><h2>{user.userId.name}</h2></div>
+                      <div style={{display:"flex",justifyContent:"center"}}><h3>{user.userId.name}</h3></div>
                     
                   </div>
                 )

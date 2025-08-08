@@ -82,6 +82,19 @@
     color: white;
 }
 
+.mobileNavbar{
+    display: flex;
+    flex-direction: row;
+    padding-left: 3rem;
+    background-color: black;
+    color: white;
+    border-top: 1px solid grey;
+    bottom: 0;
+    width: 100%;
+    padding-block: 0.5rem;
+    position: fixed;
+    display: none;
+}
 
 @media only screen and (max-width:600px){
     .homeContainer_extraContainer{
@@ -95,5 +108,14 @@
     }
     .homeContainer_leftBar{
         display: none;
+    }
+    .mobileNavbar{
+        display: flex;
+    }
+    .sideBarOption{
+        cursor:default;
+    }
+    .homeContainer_feedContainer{
+    height: calc(100vh - 125px); 
     }
 }

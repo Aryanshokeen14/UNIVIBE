@@ -13,7 +13,8 @@
     padding-inline: 2rem;
     min-height: 80vh;
     color: white;
-    flex-direction: row
+    flex-direction: row;
+    width: 100%;
 };
 
 .mainContainer_left{

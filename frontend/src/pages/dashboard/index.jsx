@@ -387,12 +387,7 @@ export default function Dashboard() {
                               </span>
                             </p>
                             <p
-                              style={{
-                                fontSize: "12px",
-                                color: "gray",
-                                width: "15%",
-                                textAlign: "right",
-                              }}
+                            className={styles.commentDate}
                             >
                               {new Date(postComment.createdAt).toLocaleString(
                                 "en-IN",

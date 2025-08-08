@@ -81,3 +81,10 @@
     margin-top: 7px;
     border: 1px solid grey;
 }
+
+
+@media only screen and (max-width:600px){
+    .inputRow{
+        gap: 0;
+    }
+}
