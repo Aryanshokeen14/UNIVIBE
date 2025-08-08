@@ -12,7 +12,7 @@ import {
   postComment,
 } from "@/config/redux/action/postAction";
 import { getAboutUser, getAllUsers } from "@/config/redux/action/authAction";
-import UserLayout from "@/layout/userLayout/index.js";
+import UserLayout from "@/layout/UserLayout";
 import DashboardLayout from "@/layout/DashboardLayout";
 import styles from "./index.module.css";
 import { BASE_URL } from "@/config";
