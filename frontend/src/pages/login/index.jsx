@@ -1,4 +1,4 @@
-import UserLayout from "@/layout/UserLayout";
+import UserLayout from "../../layout/UserLayout";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSelector, useDispatch} from "react-redux";

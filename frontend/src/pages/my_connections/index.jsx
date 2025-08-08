@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import DashboardLayout from '../../layout/DashboardLayout'
-import UserLayout from '../../layout/UserLayout'
+import UserLayout from "../../layout/UserLayout";
 import { useDispatch, useSelector } from 'react-redux'
 import { AcceptConnection, getMyConnectionRequests, getAboutUser, getAllUsers } from '@/config/redux/action/authAction'
 import { BASE_URL } from '@/config'
