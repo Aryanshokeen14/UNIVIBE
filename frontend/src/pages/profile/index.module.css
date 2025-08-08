@@ -44,7 +44,9 @@
     flex:0.6;
     border: 1px solid grey;
     border-radius: 10px;
-    
+    min-height: 500px;
+    height: fit-content;
+    padding-bottom: 20px;
 }
 .infoHeading{
     background: rgb(78, 78, 78);
@@ -58,19 +60,40 @@
 
 .nameEdit{
     outline: none;
-    border-style: none;
+    border-style:dotted;
     padding-inline: 10px;
     padding-block: 3px;
     background-color: #000;
-    color: white;
+    color: grey;
     font-size: 1.1rem;
+    line-height: 20px;
 }
 
 .bioEdit{
     outline: none;
-    border-style:dashed;
     padding-inline: 10px;
     padding-block: 3px;
     background-color: #000;
+    color: grey;
+    width: 100%;
+}
+
+
+.updateButton > button{
     color: white;
+    background-color: rgb(51, 109, 136);
+    padding-inline: 1rem;
+    padding-block: 0.4rem;
+    border-style: none;
+    font-size: large;
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+
+@media only screen and (max-width:600px){
+    .container{
+        flex-direction: column;
+    }
 }

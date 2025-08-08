@@ -50,7 +50,7 @@ function LoginComponent() {
             <p style={{color: authState.isError ? "red":"green"}}>{authState.message.message}</p>
             <div className={styles.inputContainer}>
              {userLoginMethod ? <></> : <div className={styles.inputRow}>
-                <input onChange={(e)=> setUsername(e.target.value)} type="text" placeholder="Username" className={styles.inputField} />
+                <input onChange={(e)=> setUsername(e.target.value)} type="text" placeholder="Username" className={styles.inputField} />&nbsp;
                 <input onChange={(e)=> setName(e.target.value)} type="text" placeholder="Name" className={styles.inputField} />
               </div> }
                 <input onChange={(e)=> setEmail(e.target.value)} type="text" placeholder="Email" className={styles.inputField} />
@@ -61,7 +61,7 @@ function LoginComponent() {
                   }else{
                     handleRegister();
                   }
-                }} className={styles.buttonWithOutline} style={{padding:"10px 20px", borderRadius:"5px", cursor:"pointer", backgroundColor:"#f0f0f0", width:"400px", marginTop:"7px"}}>
+                }} className={styles.buttonWithOutline}>
                   {userLoginMethod ? "Sign In" : "Sign Up"}
                 </div>
             </div>

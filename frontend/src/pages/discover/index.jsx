@@ -2,11 +2,12 @@ import React , { useEffect }from 'react'
 import DashboardLayout from '../../layout/DashboardLayout'
 import UserLayout from '../../layout/UserLayout'
 import { useSelector } from 'react-redux';
-import { getAllUsers } from '@/config/redux/action/authAction';
+import { getAllUsers, getAboutUser } from '@/config/redux/action/authAction';
 import { useDispatch } from 'react-redux';
 import { BASE_URL } from '@/config';
 import styles from "./index.module.css"
 import { useRouter } from 'next/router';
+import {getAllPosts} from '@/config/redux/action/postAction'
 
 export default function DiscoverPage() {
   const authState = useSelector((state)=> state.auth)
@@ -17,6 +18,16 @@ export default function DiscoverPage() {
       dispatch(getAllUsers());
     }
   },[])
+  useEffect(()=>{
+          if(authState.isTokenThere){
+            console.log("AUTH TOKEN")
+            dispatch(getAllPosts())
+            dispatch(getAboutUser({token: localStorage.getItem("token")}))
+          }
+          if(!authState.all_profiles_fetched){
+            dispatch(getAllUsers());
+          }
+      },[authState.isTokenThere])
   return (
     
      <UserLayout>
@@ -30,8 +41,9 @@ export default function DiscoverPage() {
                     router.push(`/view_profile/${user.userId.username}`)
                   }} key={user._id} className={styles.userCard}>
                     <img src={`${BASE_URL}/${user.userId.profilePicture}`} alt="" />
-                    <h1>{user.userId.name}</h1>
-                    <p>{user.userId.username}</p>
+                    
+                      <div style={{display:"flex",justifyContent:"center"}}><h2>{user.userId.name}</h2></div>
+                    
                   </div>
                 )
               })}

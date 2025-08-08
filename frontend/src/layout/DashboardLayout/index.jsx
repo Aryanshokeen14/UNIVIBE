@@ -3,6 +3,7 @@ import styles from "./index.module.css";
 import { useRouter } from "next/navigation";
 import { setTokenIsThere } from "@/config/redux/reducer/authReducer";
 import { useDispatch , useSelector} from "react-redux";
+import { BASE_URL } from "@/config";
 
 export default function Dashboard({ children }) {
   const router = useRouter();
@@ -15,6 +16,8 @@ export default function Dashboard({ children }) {
     }
     dispatch(setTokenIsThere());
 },[])
+
+
   return (
     <div>
       <div className="container">
@@ -79,6 +82,7 @@ export default function Dashboard({ children }) {
                 strokeWidth={1.5}
                 stroke="currentColor"
                 className="size-6"
+                style={{minWidth:"2rem"}}
               >
                 <path
                   strokeLinecap="round"
@@ -96,9 +100,11 @@ export default function Dashboard({ children }) {
             <h3>Top Profiles</h3>
             {authState.all_profiles_fetched && authState.all_users.map((profile)=>{
                 return(
-                    <div key={profile._id} className={styles.extraContainer_profile}>
-                        <img src={profile.profile_pic} alt="" />
-                        <p>{profile.userId.name}</p>
+                    <div key={profile._id} className={styles.extraContainer_profile} onClick={()=>{
+                          router.push(`/view_profile/${profile.userId.username}`)
+                        }}>
+                        <img src={`${BASE_URL}/${profile.userId.profilePicture}`} alt="" style={{width:"10%",borderRadius:"50%",height:"30px"}}/>
+                        <p >{profile.userId.name}</p>
                     </div>
                 )
             }) }

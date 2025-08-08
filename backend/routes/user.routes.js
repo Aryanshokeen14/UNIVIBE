@@ -1,6 +1,7 @@
 import {Router} from "express";
 import {login ,uploadProfilePicture , register , updateUserProfile,getUserAndProfile , updateProfileData , getAllUserProfile , sendConnectionRequest , getMyConnectionRequest , whatAreMyConnections , acceptConnectionRequest,getUserProfileAndUserBasedOnUsername} from "../controllers/user.controller.js";
 import multer from 'multer'
+import path from "path";
 const router = Router();
 
 const storage = multer.diskStorage({
@@ -8,7 +9,8 @@ const storage = multer.diskStorage({
         cb(null,'uploads/');
     },
     filename: (req,file,cb)=>{
-        cb(null,file.originalname);
+        const uniqueName = Date.now() + "_" + Math.round(Math.random() * 1e9) + path.extname(file.originalname);
+        cb(null,uniqueName);
     }
 })
 

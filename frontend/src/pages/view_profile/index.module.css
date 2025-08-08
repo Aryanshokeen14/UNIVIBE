@@ -2,14 +2,34 @@
     padding: 1.3rem;
     min-height: 92vh;
     display: flex;
-    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     gap: 2rem;
     width: 100%;
+}
+
+.upperHalf{
+    display: flex;
+    flex-direction: row;
+    padding: 1.3rem;
+    gap: 2rem;
+    width: 100%;
+}
+
+.lowerHalf{
+    padding: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    
 }
 
 .leftSide{
     flex:0.4;
     width: 100%;
+
 }
 .imageContainer{
    border: 1px solid grey;
@@ -33,10 +53,16 @@
 }
 .rightSide{
     flex:0.6;
+    min-height: 450px;
+    height: fit-content;
+    padding-bottom: 20px;
     border: 1px solid grey;
     border-radius: 10px;
-    
+    gap: 1rem;
+    flex-direction: column;
+    min-width: 200px;
 }
+
 .infoHeading{
     background: rgb(78, 78, 78);
     border-top-left-radius: 10px;
@@ -45,4 +71,25 @@
     font-size: larger;
     padding-inline: 1rem;
     padding-block: 0.1rem;
+}
+
+
+.recentActivityHeading{
+    border: 1px solid grey;
+    padding-inline: 1rem;
+    width: fit-content;
+    padding-block: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: grey;
+}
+
+
+
+@media only screen and (max-width:600px){
+    .upperHalf{
+        flex-direction: column;
+    }
 }

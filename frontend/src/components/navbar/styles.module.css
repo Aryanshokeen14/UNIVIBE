@@ -2,12 +2,17 @@
     padding:1.2rem;
     background-color: black;
     color: white;
+    position: fixed;
+    width: 100vw;
+    top: 0;
+    z-index: 100;
 }
 
 .navbar{
     display:flex;
     align-items: center;
     justify-content: space-between;
+    /* position: fixed; */
 }
 
 .navbarOptionContainer{
@@ -19,8 +24,9 @@
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    background: rgb(247, 194, 142);
+    background: rgb(0, 0, 0);
     width: fit-content;
     margin-top: "20px";
-    color: black
-};
+    color: white;
+    border: 1px solid grey;
+}

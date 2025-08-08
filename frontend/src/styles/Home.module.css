@@ -2,7 +2,7 @@
     font-family: "Poppins";
     padding: 1.2rem;
     background-color: black;
-    min-height:90vh;
+    min-height:100vh;
 }
 
 .mainContainer{
@@ -11,8 +11,9 @@
     align-items:center;
     gap: 4rem;
     padding-inline: 2rem;
-    height: 80vh;
+    min-height: 80vh;
     color: white;
+    flex-direction: row
 };
 
 .mainContainer_left{
@@ -27,4 +28,12 @@
     background: -webkit-linear-gradient(45deg, white, rgb(87, 87, 87));
     background-clip: text ;
     -webkit-text-fill-color: transparent;
+}
+
+
+@media only screen and (max-width:600px){
+    .mainContainer{
+        flex-direction: column;
+        padding-top: 150px;
+    }
 }

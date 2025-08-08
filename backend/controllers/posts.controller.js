@@ -1,8 +1,7 @@
 import User from '../models/user.model.js';
-import Profile from '../models/profile.model.js';
 import Post from '../models/posts.model.js';
 import Comment from "../models/comments.model.js"
-
+import Like from "../models/like.model.js";
 
 export const activeCheck = async (req,res)=>{
     return res.status(200).json({message:"RUNNING"});
@@ -73,7 +72,7 @@ export const get_comments_by_post = async(req,res)=>{
         }
         const comments = await Comment
         .find({postId:post_id})
-        .populate("userId" , "username name");
+        .populate("userId" , "username name profilePicture");
         return res.json(comments);
     }catch(error){
         return res.status(500).json({message:error.message});
@@ -119,3 +118,20 @@ export const increment_likes = async(req,res)=>{
         return res.status(500).json({message: err.message});
     }
 };
+
+
+export const decrement_likes = async(req,res)=>{
+    const {post_id} = req.body;
+    try{
+        const post = await Post.findOne({_id: post_id});
+        if(!post){
+            return res.status(404).json({message:"Post not found"});
+        };
+        post.likes -= 1;
+        await post.save();
+        return res.json({message:"Post Unliked"});
+    }catch(err){
+        return res.status(500).json({message: err.message});
+    }
+};
+

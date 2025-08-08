@@ -18,7 +18,6 @@ export default function NavbarComponent() {
         <div className={styles.navbarOptionContainer}>
             {authState.profileFetched && 
             <div style={{display:"flex", gap:"1.2rem"}}>
-              <p>Hi, {authState.user?.userId?.name}</p>
               <p onClick={()=>{
                 router.push("/profile")
               }} style={{fontWeight:"bold", cursor:"pointer"}}>Profile</p>

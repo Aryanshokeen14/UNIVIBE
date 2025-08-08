@@ -161,9 +161,12 @@ export const sendConnectionRequest = async(req,res)=>{
 
 
 export const getMyConnectionRequest = async(req,res)=>{
-    const {token} = req.body;
+    const {token} = req.body
+    if (!token) {
+  return res.status(400).json({ message: "Token is required" });
+}
     try{
-        const user = await User.findOne({token});
+        const user = await User.findOne({token:token});
         if(!user){
             return res.status(404).json({message:"User not found"});
         }
@@ -264,5 +267,6 @@ export const getUserProfileAndUserBasedOnUsername = async(req,res)=>{
         return res.status(500).json({message: err.message});
     }
 }
+
 
 

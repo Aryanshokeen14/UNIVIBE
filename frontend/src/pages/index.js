@@ -8,6 +8,7 @@ import UserLayout from "@/layout/UserLayout";
 
 const inter = Inter({ subsets: ["latin"] });
 
+
 export default function Home() {
    
   const router = useRouter();
@@ -29,7 +30,7 @@ export default function Home() {
 
 
           <div className={styles.mainContainer_right}>
-            <img style={{width:"60%"}} src="/images/shokeenPic.jpeg" alt="connection image" />
+            <img style={{width:"90%"}} src="/images/landingImage.png" alt="connection image" />
           </div>
 
 

@@ -8,7 +8,7 @@ import { BASE_URL } from "@/config";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllPosts } from "@/config/redux/action/postAction";
-import {getAboutUser, getConnectionsRequest , getMyConnectionRequests, sendConnectionRequest} from "@/config/redux/action/authAction"
+import {getAboutUser, getAllUsers, getConnectionsRequest , getMyConnectionRequests, sendConnectionRequest} from "@/config/redux/action/authAction"
 import { current } from "@reduxjs/toolkit";
 
 export default function ProfilePage() {
@@ -23,6 +23,12 @@ export default function ProfilePage() {
     dispatch(getAboutUser({token:localStorage.getItem("token")}))
     dispatch(getAllPosts())
   },[])
+
+  useEffect(()=>{
+    if(!authState.all_profiles_fetched){
+      dispatch(getAllUsers())
+    }
+  },[authState.isTokenThere])
   
   useEffect(()=>{
       if(authState.user != undefined){
@@ -59,7 +65,9 @@ export default function ProfilePage() {
       bio: userProfile.bio,
       currentPost: userProfile.currentPost,
       education: userProfile.education,
-      dating: userProfile.dating
+      dating: userProfile.dating,
+      location:userProfile.location,
+      socialLinks: userProfile.socialLinks
     })
     dispatch(getAboutUser({token: localStorage.getItem("token")}))
   }
@@ -72,8 +80,8 @@ export default function ProfilePage() {
         <div className={styles.container}>
           <div className={styles.leftSide}>
             <label htmlFor="profilePictureUpload">
-                <div htmlFor="profilePictureUpload"  className={styles.imageContainer}>
-              <p>Picture</p>
+                <div className={styles.imageContainer}>
+              <p>Edit Picture</p>
               <img
                 src={`${BASE_URL}/${userProfile.userId.profilePicture}`}
                 alt=""
@@ -83,35 +91,78 @@ export default function ProfilePage() {
             <input hidden type="file" id="profilePictureUpload" onChange={(e)=>{
                 updateProfilePicture(e.target.files[0])
             }}/>
-            <p>@{userProfile.userId.username}</p>
+            <br />
 
             
 
            <div style={{color:"grey"}}>
-            <h4>Status</h4>
-             <p>Relationship: {userProfile.dating[0]?.relationshipStatus}</p>
-            <p>Looking For: {userProfile.dating[0]?.lookingFor}</p>
-            <p>Interests: {userProfile.dating[0]?.interests.join(", ")}</p>
+            <h4>Edit Status</h4>
+             <p>Relationship: <input
+    className={styles.nameEdit}
+    type="text" style={{color:"grey"}}
+    value={userProfile.dating[0]?.relationshipStatus || ""}
+    onChange={(e) => {
+      const updatedDating = [...userProfile.dating];
+      updatedDating[0] = {
+        ...updatedDating[0],
+        relationshipStatus: e.target.value,
+      };
+      setUserProfile({ ...userProfile, dating: updatedDating });
+    }}
+  /></p>
+            <p>Looking For : <input
+    className={styles.nameEdit}
+    style={{color:"grey"}}
+    type="text"
+    value={userProfile.dating[0]?.lookingFor || ""}
+    onChange={(e) => {
+      const updatedDating = [...userProfile.dating];
+      updatedDating[0] = {
+        ...updatedDating[0],
+        lookingFor: e.target.value,
+      };
+      setUserProfile({ ...userProfile, dating: updatedDating });
+    }}
+  /></p>
+            <p>Interest: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+    className={styles.nameEdit}
+    style={{color:"grey"}}
+    type="text"
+    value={userProfile.dating[0]?.interests.join(", ") || ""}
+    onChange={(e) => {
+      const updatedDating = [...userProfile.dating];
+      updatedDating[0] = {
+        ...updatedDating[0],
+        interests: e.target.value.split(",").map((item) => item.trim()),
+      };
+      setUserProfile({ ...userProfile, dating: updatedDating });
+    }}
+  /></p>
            </div>
 
           </div>
           <div className={styles.rightSide}>
             <div className={styles.infoHeading}>
-              <p>Information</p>
+              <p>Edit Information</p>
             </div>
             <table>
               <thead>
                 <tr>
-                  <th>Basic Info</th>
+                  <th>Basic Info&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Name</td>
+                  <td style={{color:"grey"}}>Name</td>
                   <td><input className={styles.nameEdit} type="text" value={userProfile.userId.name} onChange={(e)=>{
                     setUserProfile({...userProfile, userId: {...userProfile.userId , name: e.target.value}})
                   }}/></td>
-    
+                </tr>
+                <tr>
+                  <td style={{color:"grey"}}>Home Town</td>
+                  <td><input className={styles.nameEdit}   type="text" value={userProfile.location} onChange={(e)=>{
+                    setUserProfile({...userProfile, location: e.target.value})
+                  }}/></td>
                 </tr>
               </tbody>
             </table>
@@ -124,52 +175,106 @@ export default function ProfilePage() {
               </thead>
               <tbody>
                 <tr>
-                  <td>College</td>
-                  <td>{userProfile.education[0]?.institution}</td>
+                  <td style={{color:"grey"}}>College</td>
+                 <td>
+  <input
+    className={styles.nameEdit}
+    type="text"
+    value={userProfile.education[0]?.institution}
+    onChange={(e) => {
+      const updatedEducation = [...userProfile.education];
+      updatedEducation[0] = {
+        ...updatedEducation[0],
+        institution: e.target.value,
+      };
+      setUserProfile({
+        ...userProfile,
+        education: updatedEducation,
+      });
+    }}
+  />
+</td>
+
                 </tr>
                 <tr>
-                  <td>Discipline</td>
-                  <td>{userProfile.education[0]?.degree}</td>
+                  <td style={{color:"grey"}}>Discipline</td>
+                  <td>
+  <input
+    className={styles.nameEdit}
+    type="text"
+    value={userProfile.education[0]?.degree || ""}
+    onChange={(e) => {
+      const updatedEducation = [...userProfile.education];
+      updatedEducation[0] = {
+        ...updatedEducation[0],
+        degree: e.target.value,
+      };
+      setUserProfile({
+        ...userProfile,
+        education: updatedEducation,
+      });
+    }}
+  />
+</td>
+
                 </tr>
                 <tr>
-                  <td>Passing Year</td>
-                  <td>{userProfile.education[0]?.passingYear}</td>
+                  <td style={{color:"grey"}}>Passing Year</td>
+                  <td>
+  <input
+    className={styles.nameEdit}
+    type="text"
+    value={userProfile.education[0]?.passingYear || ""}
+    onChange={(e) => {
+      const updatedEducation = [...userProfile.education];
+      updatedEducation[0] = {
+        ...updatedEducation[0],
+        passingYear: e.target.value,
+      };
+      setUserProfile({
+        ...userProfile,
+        education: updatedEducation,
+      });
+    }}
+  />
+</td>
+
+                 
                 </tr>
               </tbody>
             </table>
             <div>
+              <br />
               <h3>Bio</h3>
               <textarea value={userProfile.bio} 
                 onChange={(e)=>{
                   setUserProfile({...userProfile, bio: e.target.value})
                 }}
-                rows={Math.max(3,Math.ceil(userProfile.bio.length / 80))}
+                rows={Math.max(3,Math.ceil(userProfile.bio.length /80))}
                 className={styles.bioEdit}
+                
               />
             </div>  
+            
             <div>
-              <h3>Recent activity</h3>
-              {userPosts.map((post)=>{
-                return(
-                  <div key={post._id}>
-                    {post.media !== "" ? <div><img style={{width:"20%"}} src={`${BASE_URL}/${post.media}`}></img> <p>{post.body}</p></div>
-                    : <p>{post.body}</p>}
-                  </div>
-                )
-              })}
+              <br />
+              <h3>Instagram Username</h3>
+              <input onChange={(e)=>{
+                setUserProfile({...userProfile , socialLinks:{...userProfile.socialLinks , instagram: e.target.value}})
+              }} className={styles.nameEdit} type="text" value={userProfile.socialLinks?.instagram || ""} placeholder="Enter your insta username"/>
             </div>
 
-          {userProfile != authState.user && 
+{userProfile != authState.user && 
               <div onClick={()=>{
                 updateProfileData()
               }} className={styles.updateButton}>
                 <button>Update</button>
               </div>
           }
-
           </div>
 
         </div>
+          
         }
       </DashboardLayout>
     </UserLayout>

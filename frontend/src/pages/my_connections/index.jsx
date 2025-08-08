@@ -2,15 +2,17 @@ import React, { useEffect } from 'react'
 import DashboardLayout from '../../layout/DashboardLayout'
 import UserLayout from '../../layout/UserLayout'
 import { useDispatch, useSelector } from 'react-redux'
-import { AcceptConnection, getMyConnectionRequests } from '@/config/redux/action/authAction'
+import { AcceptConnection, getMyConnectionRequests, getAboutUser, getAllUsers } from '@/config/redux/action/authAction'
 import { BASE_URL } from '@/config'
 import { useRouter } from 'next/router'
-import { connection } from 'next/server'
+import {getAllPosts} from '@/config/redux/action/postAction'
+
 
 export default function MyConnectionsPage() {
   const dispatch = useDispatch()
   const authState = useSelector((state)=>state.auth)
   const router = useRouter()
+
   useEffect(()=>{
     dispatch(getMyConnectionRequests({token:localStorage.getItem("token")}));
   },[])
@@ -20,12 +22,22 @@ export default function MyConnectionsPage() {
     }
   },[authState.connectionRequest])
 
+  useEffect(()=>{
+            if(authState.isTokenThere){
+              console.log("AUTH TOKEN")
+              dispatch(getAllPosts())
+              dispatch(getAboutUser({token: localStorage.getItem("token")}))
+            }
+            if(!authState.all_profiles_fetched){
+              dispatch(getAllUsers());
+            }
+        },[authState.isTokenThere])
 
   return (
     <div>
        <UserLayout>
        <DashboardLayout>
-        <div>
+        {/* <div>
             <h1>My Connections</h1>
             {authState.connectionRequest.length !=0 && authState.connectionRequest.filter((connection)=> connection.status_accepted === null).map((user,index)=>{
               return(
@@ -62,6 +74,9 @@ export default function MyConnectionsPage() {
               )
             })}
 
+        </div> */}
+        <div style={{display:"flex", justifyContent:"center",alignItems:"center", minHeight:"80vh"}}>
+          <h2>Working on it</h2>
         </div>
        </DashboardLayout>
     </UserLayout>
