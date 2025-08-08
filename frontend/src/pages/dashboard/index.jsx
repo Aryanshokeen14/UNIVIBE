@@ -269,10 +269,11 @@ export default function Dashboard() {
                                   onClick={() => {
                                     const text = encodeURIComponent(post.body);
                                     const url =
-                                      encodeURIComponent("UniVibe.in");
+                                      encodeURIComponent("univibe-two.vercel.app");
                                     const twitterUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+                                    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text + " " + url)}`;
                                     window.open(
-                                      twitterUrl,
+                                      whatsappUrl,
                                       "_blank",
                                       "noopener,noreferrer"
                                     );
