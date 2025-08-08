@@ -1,7 +1,7 @@
 import NavbarComponent from '@/components/navbar'
 import React from 'react'
 
-function UserLayout({children}) {
+export default function UserLayout({children}) {
   return (
     <div>
         <NavbarComponent/>
@@ -9,5 +9,3 @@ function UserLayout({children}) {
     </div>
   )
 }
-
-export default UserLayout
