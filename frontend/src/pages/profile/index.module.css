@@ -47,6 +47,7 @@
     min-height: 500px;
     height: fit-content;
     padding-bottom: 20px;
+    overflow: hidden;
 }
 .infoHeading{
     background: rgb(78, 78, 78);

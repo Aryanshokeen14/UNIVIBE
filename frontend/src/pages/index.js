@@ -30,7 +30,7 @@ export default function Home() {
 
 
           <div className={styles.mainContainer_right}>
-            <Image style={{width:"90%"}} src="/images/landingImage.png" alt="connection image" />
+            <Image width={400} height={400} style={{width:"90%"}} src="/images/landingImage.png" alt="connection image" />
           </div>
 
 
